@@ -1,5 +1,6 @@
 /*
-  Once you complete a problem, refresh ./destructuring.html in your browser and check to see if the problem's test(s) are passing.
+  Once you complete a problem, refresh ./destructuring.html in your browser and check 
+  to see if the problem's test(s) are passing.
   Passed tests will be indicated by a green circle.
   Failed tests will be indicated by a red X.
 
@@ -18,11 +19,11 @@ var carDetails = {
 // Do not edit the code above.
 
 /*
-  Use object destructuring to save the property values from the object carDetails into new variables. 
+  Use object destructuring to save the property values from the object carDetails into
+   new variables. 
 */
 
-//Code Here
-
+var {color, make, model, year} = carDetails;
 
 
 ////////// PROBLEM 2 //////////
@@ -34,7 +35,7 @@ var carDetails = {
 */
 
 function greeting( obj ) {
-  //Code Here
+  var {firstName, lastName, title} = obj;
   
   // Do not edit the code below.
   return 'Hello, ' + title + ' ' + firstName + ' ' + lastName + '!';
@@ -53,9 +54,10 @@ function greeting( obj ) {
   Sum up the values and return the total number.
 */
 
-//Code Here
-
-
+function totalPopulation(obj) {
+  var {utah, california, texas, arizona} = obj;
+  return obj.utah + obj.california + obj.texas + obj.arizona;
+}
 
 ////////// PROBLEM 4 //////////
 
@@ -67,9 +69,12 @@ function greeting( obj ) {
   Push these new variables to an array and return the array. 
 */
 
-//Code Here
-
-
+function ingredients(obj) {
+  var myArr = [];
+  var {carb, fat, protein} = obj;
+  myArr.push(obj.carb, obj.fat, obj.protein);
+  return myArr;
+}
 
 ////////// PROBLEM 5 //////////
 
@@ -85,9 +90,9 @@ function greeting( obj ) {
   Find the smallest number of the three and return that number.
 */
 
-//Code Here
-
-
+function largeNumbers({first, second, third}) {
+  return first < second ? first : second < third ? second : third;
+}
 
 ////////// PROBLEM 6 //////////
 
@@ -97,6 +102,6 @@ function greeting( obj ) {
   Find the longest array and return that array.
 */
 
-//Code Here
-
-
+function numberGroups({a, b, c}) {
+  return a.length > b.length && a.length > c.length ? a : b.length > c.length && b.length > a.length ? b : c;
+}
