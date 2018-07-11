@@ -163,3 +163,28 @@ var progressiveManager = new ProgressiveManager('a', 'b', 'c', 24, [], 'Not a ma
         - It should set decrease wear_and_tear_count by 10, and set needs_reboot to false
 */
 
+class Machine {
+  constructor(widgets_made_count, wear_and_tear_count, needs_reboot) {
+    this.widgets_made_count = 0;
+    this.wear_and_tear_count = 0;
+    this.needs_reboot = false;
+  }
+  makeWidgets(num) {
+    this.widgets_made_count += num;
+    this.wear_and_tear_count += (num / 50);
+  }
+  fixMachine() {
+    this.needs_reboot = true;
+  }
+  reboot() {
+    function completed() {
+      this.wear_and_tear_count -= 10;
+      this.needs_reboot = false; 
+    }
+    return completed;
+  }
+}
+
+var newMachine = new Machine(0, 0, false);
+newMachine.makeWidgets(1);
+newMachine.reboot(rebootComplete);
