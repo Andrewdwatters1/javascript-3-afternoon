@@ -23,15 +23,26 @@
     - age
   Each employee has the following methods:
     - makeWidget
-      - This returns a string equal to the employees first name + last name + the word widget
+      - This returns a string equal to the employees first name + last name + the word 
+      widget
       - Example: "Dave Smith Widget"
 
-  Call your class Employee and receive all the data in the constructor in the order listed above.
+  Call your class Employee and receive all the data in the constructor in the order 
+  listed above.
 */
 
-//Code Here
-
-
+class Employee {
+  constructor(first_name, last_name, email, age) {
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.email = email;
+    this.age = age;
+  }
+  makeWidget() {
+    return this.first_name + " " + this.last_name + " " + "Widget";
+  }
+}
+var newEmployee = new Employee("Andrew", "Watters", "email@email.com", 4);
 
 ////////// PROBLEM 2 //////////
 
@@ -49,20 +60,36 @@
   Call your new class Manager
 */
 
-//Code Here
+class Manager {
+  constructor(first_name, last_name, email, age, reports) {
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.email = email;
+    this.age = age;
+    this.reports = [];
+  }
+  hire(employee) {
+    this.reports.push(employee);
+  }
+  fire(index) {
+    this.reports.splice(index, 1);
+  }
+}
 
-
+var newManager = new Manager('bob', 'joe', 'email', 47, []);
 
 ////////// PROBLEM 3 //////////
 
 /*
-  Managers for Widget Co. get promoted when they get more employees, and get a bonus when they fire employees.
+  Managers for Widget Co. get promoted when they get more employees, and get a bonus 
+  when they fire employees.
   Progressive Managers have all the same properties as the manager,
   but they also have the following additional properties:
     - title - default 'Not a manager'
     - bonus - default 0
 
-  When employees are added or removed we need to check and update their title. Their titles are as follows:
+  When employees are added or removed we need to check and update their title. Their 
+  titles are as follows:
     0 : Not a manager
     1-3 : Barely Manager
     4-10 : Mostly Manager
@@ -75,8 +102,42 @@
   Call your new class ProgressiveManager
 */
 
-//Code Here
+class ProgressiveManager {
+  constructor(first_name, last_name, email, age, reports, title, bonus) {
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.email = email;
+    this.age = age;
+    this.reports = [];
+    this.title = 'Not a manager';
+    this.bonus = 0;
+    this.employeeCount = 0;
+  }
 
+  hire(employee) {
+    this.reports.push(employee);
+    this.employeeCount++;
+    
+    if (this.employeeCount >= 101) {
+      this.title = "Bestest Manager";
+    } else if (this.employeeCount < 101 && this.employeeCount > 50) {
+      this.title = "Manager Plus";
+    } else if (this.employeeCount < 51 && this.employeeCount > 10) {
+      this.title = "Manager";
+    } else if (this.employeeCount < 11 && this.employeeCount > 3) {
+      this.title = "Mostly Manager";
+    } else if (this.employeeCount < 4 && this.employeeCount > 0) {
+      this.title = "Barely Manager";
+    }
+  }
+
+  fire(index) {
+    this.reports.splice(index, 1);
+    this.bonus += 100;
+    }
+}
+
+var progressiveManager = new ProgressiveManager('a', 'b', 'c', 24, [], 'Not a manager', 0);
 
 
 ////////// PROBLEM 4 - Black Diamond //////////
@@ -101,7 +162,4 @@
         - This function returns a function that is called when the machine is done rebooting
         - It should set decrease wear_and_tear_count by 10, and set needs_reboot to false
 */
-
-//Code Here
-
 
