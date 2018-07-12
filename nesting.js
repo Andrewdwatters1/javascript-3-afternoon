@@ -44,33 +44,52 @@ var employees = [
 // Do not edit the code above.
 
 /*
-  Create a function called 'employeeUpdater' that takes no parameters. employeeUpdater will loop over the array above and perform the following:
+  Create a function called 'employeeUpdater' that takes no parameters. employeeUpdater
+   will loop over the array above and perform the following:
     1. If employee's first name is Theo, remove that employee because he just got fired.
     2. If the employee's first name is Lorie, change her department to 'HR'.
     3. Return the updated employee array.
 */
 
-//Code Here
-
-
+function employeeUpdater() {
+  for (let i = 0; i < employees.length; i++) {
+    if (employees[i]["firstName"] === "Theo") {
+      employees.splice(i, 1);
+      i--;
+    } else if (employees[i]["firstName"] === "Lorie") {
+      employees[i]["department"] = "HR";
+    }
+  } return employees;
+}
 
 ////////// PROBLEM 2 //////////
 
 // Do not edit the code below.
 var workplaceAccidents = [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
+var workplacedAccidents = [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
 // Do not edit the code above.
 
 /*
   The array above represents IDs tied to reported workplace accidents. 
-  An employee accidentally entered in duplicates to array, making it look as though there are more accidents this year than there actually are.
-    1. Write a function called 'removeDuplicates' that will remove all duplicate entries in the workplaceAccidents array.
-    2. Use nested for loops to check for duplicate numbers, and then remove the duplicates from the array.
+  An employee accidentally entered in duplicates to array, making it look
+   as though there are more accidents this year than there actually are.
+    1. Write a function called 'removeDuplicates' that will remove all 
+    duplicate entries in the workplaceAccidents array.
+    2. Use nested for loops to check for duplicate numbers, and then 
+    remove the duplicates from the array.
     3. Return the updated array.
 */
 
-//Code Here
-
-
+function removeDuplicates() {
+  var arrCopy = workplaceAccidents.slice();
+  for (let i = 0; i < workplaceAccidents.length; i++) {
+    for (let j = 0; j < arrCopy.length; j++) {
+      if (workplaceAccidents[i] === arrCopy[j]) {
+        workplaceAccidents.splice(arrCopy[j], 1)
+      } 
+    }
+  } return workplaceAccidents;
+}
 
 ////////// PROBLEM 3 //////////
 
@@ -92,13 +111,14 @@ var cat = {
 
 /*
   Fluffy has two friends, Grumpy and Lazy Bones. 
-    1. Assign the value of Grumpy's 2nd activity to the grumpyActivity variable below.
+    1. Assign the value of Grumpy's 2nd activity to the grumpyActivity 
+    variable below.
     2. Assign fluffy2ndFriend the name of Fluffy's 2nd friend.
 */
 
-//Code Here
-var grumpyActivity;
-var fluffy2ndFriend;
+
+var grumpyActivity = cat.catFriends[0].activities[1];
+var fluffy2ndFriend = cat.catFriends[1].name;
 
 
 
@@ -138,9 +158,12 @@ var myCar = {
     3. Change atFaultForAccident from true to false.
 */
 
-//Code Here
-
-
+function recordCleaner(myArr) {
+  var myArr = myCar.accidents;
+  for (let i = 0; i < myArr.length; i++) {
+    myArr[i].atFaultForAccident = false;
+  }
+}
 
 ////////// PROBLEM 5 //////////
 
@@ -157,6 +180,16 @@ var numsArr = [ [1, 2, 3, 4], [5, 6], [7, 8, 9, 10, 11]];
     4. Return the modified numsArr.
 */
 
-//Code Here
+function looper(numsArr) {
+  for (let i = 0; i < numsArr.length; i++) {
+    for (let j = 0; j < numsArr[i].length; j++) {
+      if (numsArr[i][j] % 2 === 1) {
+        numsArr.splice(j, 1, 'odd');
+      } else if (numsArr[i][j] % 2 === 0) {
+        numsArr.splice(j, 1, 'even');
+      }
+    }
+  } return numsArr;
+}
 
-
+looper(numsArr);
